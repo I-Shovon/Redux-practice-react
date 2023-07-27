@@ -1,3 +1,4 @@
 ## server
 
-server link : https://github.com/mir-hussain/moon-tech-server
+
+https://github.com/I-Shovon/Redux-practice-react-server
