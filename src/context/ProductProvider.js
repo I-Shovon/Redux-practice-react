@@ -23,7 +23,7 @@ const ProductProvider = ({ children }) => {
   }, []);
 
   const value = {
-    state,
+    state,dispatch,
   };
 
   return (
