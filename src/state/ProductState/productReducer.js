@@ -1,4 +1,5 @@
 import { actionTypes } from "./actionType";
+import { toast } from "react-toastify";
 
 export const initialState = {
   loading: false,
@@ -33,21 +34,22 @@ export const productReducer = (state, action) => {
       };
 
     case actionTypes.ADD_TO_CART:
+      toast("Added");
       return {
         ...state,
         cart: [...state.cart, action.payload],
       };
 
     case actionTypes.ADD_TO_WISH:
+      toast("Added");
       return {
         ...state,
         wish: [...state.wish, action.payload],
       };
 
-      
     case actionTypes.REMOVE_PRODUCT:
       const { product, removeFrom } = action.payload;
-
+      toast("Removed");
       if (removeFrom === "cart") {
         return {
           ...state,
