@@ -8,6 +8,9 @@ const Cart = () => {
   } = useProduct();
 
   let content;
+  // const handleRemoveFromCart = (productId) => {
+  //    dispatch({ type: REMOVE_FROM_CART, payload: productId });
+  // };
 
   if (loading) {
     content = <p>Loading</p>;
@@ -21,7 +24,11 @@ const Cart = () => {
   }
   if (!loading && !error && cart.length) {
     content = cart.map((product) => (
-      <ProductCard product={product} key={product._id} />
+      <ProductCard
+        product={product}
+        key={product._id}
+        isInCart
+      />
     ));
   }
 

@@ -5,6 +5,7 @@ export const initialState = {
   error: false,
   products: [],
   cart: [],
+  wish: [],
 };
 
 export const productReducer = (state, action) => {
@@ -34,7 +35,40 @@ export const productReducer = (state, action) => {
     case actionTypes.ADD_TO_CART:
       return {
         ...state,
-        cart: [...state, action.payload],
+        cart: [...state.cart, action.payload],
+      };
+
+    case actionTypes.ADD_TO_WISH:
+      return {
+        ...state,
+        wish: [...state.wish, action.payload],
+      };
+
+      
+    case actionTypes.REMOVE_PRODUCT:
+      const { product, removeFrom } = action.payload;
+
+      if (removeFrom === "cart") {
+        return {
+          ...state,
+          cart: [
+            ...state.cart.filter(
+              (innerProduct) => innerProduct._id !== product._id
+            ),
+          ],
+        };
+      } else if (removeFrom === "wishlist") {
+        return {
+          ...state,
+          wishlist: [
+            ...state.cart.filter(
+              (innerProduct) => innerProduct._id !== product._id
+            ),
+          ],
+        };
+      }
+      return {
+        ...state,
       };
 
     default:
